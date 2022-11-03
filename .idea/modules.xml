@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Mikroprocesor.iml" filepath="$PROJECT_DIR$/Mikroprocesor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MikroprocesorJavaFX.iml" filepath="$PROJECT_DIR$/MikroprocesorJavaFX.iml" />
     </modules>
   </component>
 </project>

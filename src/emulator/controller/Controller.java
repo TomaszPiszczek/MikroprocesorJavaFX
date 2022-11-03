@@ -1,4 +1,4 @@
-package sample.controller;
+package emulator.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
