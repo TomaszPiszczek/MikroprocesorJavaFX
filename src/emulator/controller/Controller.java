@@ -26,7 +26,6 @@ public class Controller {
    }
    
    public void inputValidation(int registerNumber,TextField registerValue){
-
       try
       {
          if(Integer.parseInt(registerValue.getText(),16) > 255 )
@@ -38,7 +37,7 @@ public class Controller {
          else
          {
             registerValues[registerNumber]=  Integer.parseInt(registerValue.getText(),16);
-
+            registers[registerNumber]=registerValue;
          }
 
       }
@@ -52,46 +51,36 @@ public class Controller {
          }
 
       }
-
-
-
    }
-
-
 
 
    @FXML
    void edytuj(MouseEvent event) {
-      /*for (TextField t :registers
-              ) {
-         System.out.println(t);
+      for (TextField t :
+              registers) {
+         t.setEditable(true);
       }
-      System.out.println(registers[0]);
-      System.out.println(AL);*/
-      System.out.println(registers[0].getClass().getName());
-      System.out.println(AL.getClass().getName());
+
    }
 
    @FXML
    void zatwierdz(MouseEvent event) {
-    /*  for (TextField t :
+      for (TextField t :
               registers) {
          t.setEditable(false);
-      }*/
-     /* AL.setEditable(true);
-      AL.setVisible(true);
-
-*/
-
+      }
 
    }
+
+
+   //generyczne 3001
    @FXML
       public void initialize() {
          AL.focusedProperty().addListener((ov,oldV,newV) -> {
             if (!newV) { // focus lost
-               inputValidation(0,AL);
+               inputValidation(0, AL);
             }
-         });
+            });
 
          AH.focusedProperty().addListener((ov,oldV,newV) -> {
             if (!newV) { // focus lost

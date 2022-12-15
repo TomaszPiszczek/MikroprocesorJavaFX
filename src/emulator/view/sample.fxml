@@ -42,14 +42,14 @@
                   <Label text="CH" GridPane.rowIndex="5" />
                   <Label text="DL" GridPane.rowIndex="6" />
                   <Label text="DH" GridPane.rowIndex="7" />
-                  <TextField fx:id="AL" prefWidth="127.0" promptText="insert value in hex" GridPane.columnIndex="1" />
-                  <TextField fx:id="AH" promptText="insert value in hex" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="BL" promptText="insert value in hex" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="BH" promptText="insert value in hex" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField fx:id="CL" promptText="insert value in hex" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField fx:id="CH" promptText="insert value in hex" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField fx:id="DL" promptText="insert value in hex" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <TextField fx:id="DH" prefWidth="134.0" promptText="insert value in hex" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField fx:id="AL" prefWidth="127.0" promptText="podaj wartość w hex" GridPane.columnIndex="1" />
+                  <TextField fx:id="AH" promptText="podaj wartość w hex" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="BL" promptText="podaj wartość w hex" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="BH" promptText="podaj wartość w hex" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="CL" promptText="podaj wartość w hex" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="CH" promptText="podaj wartość w hex" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="DL" promptText="podaj wartość w hex" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="DH" prefWidth="134.0" promptText="podaj wartość w hex" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                </children>
             </GridPane>
             <Button layoutX="41.0" layoutY="306.0" mnemonicParsing="false" onMouseClicked="#zatwierdz" prefHeight="25.0" prefWidth="150.0" text="Zatwierdź zmiany" />
