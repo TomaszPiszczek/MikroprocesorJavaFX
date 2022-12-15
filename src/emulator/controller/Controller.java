@@ -7,91 +7,145 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class Controller {
-
-   private void showAlertWithHeaderText() {
-      Alert alert = new Alert(AlertType.WARNING);
-      alert.setTitle("Test Connection");
-      alert.setHeaderText("Results:");
-      alert.setContentText("Connect to the database successfully!");
-
-      alert.showAndWait();
-   }
-
+   /**
+    * Alert wyświetlany przy walidacji wartości rejestrów
+    */
 
    int []registerValues = new int[8];
-   int []registerNames = new int[8];
    @FXML
-   private TextField textField1;
+   private TextField AL,AH,BL,BH,CL,CH,DL,DH;
 
-   @FXML
-   void button(MouseEvent event) {
+   TextField []registers = new TextField[8];
 
+
+   private void validtationAlert() {
+      Alert alert = new Alert(AlertType.WARNING);
+      alert.setTitle("Alert");
+      alert.setHeaderText("Podano błędną wartość ");
+      alert.showAndWait();
    }
+   
+   public void inputValidation(int registerNumber,TextField registerValue){
 
-   @FXML
-   void textField0(MouseEvent event) {
-     /* try
-      {
-         registerValues[0] = Integer.parseInt(String.valueOf(textField1));
-
-      }
-      catch (Exception e)
-      {
-         System.out.println(e.getMessage());
-      }
-      System.out.println(registerValues[0]);*/
       try
       {
-        registerValues[0]=  Integer.parseInt(textField1.getText(),16);
+         if(Integer.parseInt(registerValue.getText(),16) > 255 )
+         {
+            validtationAlert();
+            registerValue.setText("");
 
+         }
+         else
+         {
+            registerValues[registerNumber]=  Integer.parseInt(registerValue.getText(),16);
+
+         }
 
       }
       catch (Exception e)
-
       {
-         System.out.println(e);
+
+         if(!(registerValue.getText().equals("")))
+         {
+            validtationAlert();
+            registerValue.setText("");
+         }
+
       }
-      System.out.println(registerValues[0]);
+
+
+
+   }
+
+
+
+
+   @FXML
+   void edytuj(MouseEvent event) {
+      /*for (TextField t :registers
+              ) {
+         System.out.println(t);
+      }
+      System.out.println(registers[0]);
+      System.out.println(AL);*/
+      System.out.println(registers[0].getClass().getName());
+      System.out.println(AL.getClass().getName());
    }
 
    @FXML
-   void textField1(MouseEvent event) {
+   void zatwierdz(MouseEvent event) {
+    /*  for (TextField t :
+              registers) {
+         t.setEditable(false);
+      }*/
+     /* AL.setEditable(true);
+      AL.setVisible(true);
+
+*/
+
 
    }
-
    @FXML
-   void textField2(MouseEvent event) {
+      public void initialize() {
+         AL.focusedProperty().addListener((ov,oldV,newV) -> {
+            if (!newV) { // focus lost
+               inputValidation(0,AL);
+            }
+         });
 
-   }
+         AH.focusedProperty().addListener((ov,oldV,newV) -> {
+            if (!newV) { // focus lost
+               inputValidation(1,AH);
+             
+            }
+         });
 
-   @FXML
-   void textField3(MouseEvent event) {
+         BL.focusedProperty().addListener((ov,oldV,newV) -> {
+            if (!newV) { // focus lost
+               inputValidation(2,BL);
+             
+            }
+         });
+        BH.focusedProperty().addListener((ov,oldV,newV) -> {
+            if (!newV) { // focus lost
+               inputValidation(3,BH);
+             
+            }
+         });
 
-   }
+         CL.focusedProperty().addListener((ov,oldV,newV) -> {
+            if (!newV) { // focus lost
+               inputValidation(4,CL);
+             
+            }
+         });
 
-   @FXML
-   void textField4(MouseEvent event) {
+         CH.focusedProperty().addListener((ov,oldV,newV) -> {
+            if (!newV) { // focus lost
+               inputValidation(5,CH);
+             
+            }
+         });
 
-   }
+         DL.focusedProperty().addListener((ov,oldV,newV) -> {
+            if (!newV) { // focus lost
+               inputValidation(6,DL);
+             
+            }
+         });
 
-   @FXML
-   void textField5(MouseEvent event) {
+         DH.focusedProperty().addListener((ov,oldV,newV) -> {
+            if (!newV) { // focus lost
+               inputValidation(7,DH);
+             
+            }
+         });
+      }
 
-   }
 
-   @FXML
-   void textField6(MouseEvent event) {
 
-   }
 
-   @FXML
-   void textField7(MouseEvent event) {
-
-   }
-   public void inputValidation(int registerValue)
-   {
-
-   }
 
 
 }
+
