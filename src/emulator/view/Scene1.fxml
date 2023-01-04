@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emulator.controller.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emulator.controller.Scene1Controller">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -54,6 +54,7 @@
             </GridPane>
             <Button layoutX="41.0" layoutY="306.0" mnemonicParsing="false" onMouseClicked="#zatwierdz" prefHeight="25.0" prefWidth="150.0" text="Zatwierdź zmiany" />
             <Button layoutX="42.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#edytuj" prefHeight="25.0" prefWidth="150.0" text="Edytuj" />
+            <Button layoutX="349.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#switchScene" text="Wykonaj akcje" />
          </children>
       </Pane>
    </children>
