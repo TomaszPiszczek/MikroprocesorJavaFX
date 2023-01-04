@@ -12,19 +12,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Scene1Controller {
    /**
     * Alert wyświetlany przy walidacji wartości rejestrów
     */
 
-   int []registerValues = new int[8];
+
    boolean editPressed = false;
    SingletonData registerData = SingletonData.getInstance();
    @FXML
    private TextField AL,AH,BL,BH,CL,CH,DL,DH;
+
+   TextField []registerTemp = new TextField[8];
 
 
 
@@ -34,20 +36,21 @@ public class Scene1Controller {
       alert.setHeaderText("Podano błędną wartość ");
       alert.showAndWait();
    }
-   private Parent root;
 
    public void switchScene(MouseEvent event) throws IOException {
-      root = FXMLLoader.load(getClass().getResource("../view/Scene2.fxml"));
+      Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../view/Scene2.fxml")));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       Scene scene = new Scene(root);
       stage.setScene(scene);
       stage.show();
-      System.out.println("registerSwitchScene" + registerData.getRegisterName()[0].getText());
+      System.out.println("registerSwitchScene 1" + registerData.getRegisterName()[0].getText());
+
+
    }
 
 
 
-   public void inputValidation(int registerNumber,TextField registerValue){
+   public void inputValidation(TextField registerValue){
       try
       {
          if(Integer.parseInt(registerValue.getText(),16) > 255 )
@@ -72,18 +75,23 @@ public class Scene1Controller {
 
    @FXML
    void edytuj() {
-      for (TextField t :
-              registerData.getRegisterName()) {
-         t.setEditable(true);
-      }
-      editPressed= true;
+      editPressed=true;
+      AL.setEditable(true);
+      AH.setEditable(true);
+      BL.setEditable(true);
+      BH.setEditable(true);
+      CL.setEditable(true);
+      CH.setEditable(true);
+      DL.setEditable(true);
+      DH.setEditable(true);
+      initialize();
 
    }
 
    @FXML
    void zatwierdz() {
 
-
+      System.out.println("Zatwierdzenie");
 
       registerData.setRegisterName(0,AL);
       registerData.setRegisterName(1,AH);
@@ -104,78 +112,82 @@ public class Scene1Controller {
       registerData.setRegisterValue(6, Integer.parseInt(DL.getText(),16));
       registerData.setRegisterValue(7, Integer.parseInt(DH.getText(),16));
 
+      AL = registerData.getRegisterName()[0];
+      AH = registerData.getRegisterName()[1];
+      BL = registerData.getRegisterName()[2];
+      BH = registerData.getRegisterName()[3];
+      CL = registerData.getRegisterName()[4];
+      CH = registerData.getRegisterName()[5];
+      DL = registerData.getRegisterName()[6];
+      DH = registerData.getRegisterName()[7];
 
-    /*  for (TextField t :
+
+      for (TextField t :
               registerData.getRegisterName()) {
-         System.out.println("AL " + t.getText());
          t.setEditable(false);
       }
-      for (int t :
-              registerData.getRegisterValue()) {
-         System.out.println("int" + t);
-
-      }*/
     editPressed=false;
    }
+
+
 
 
    //generyczne 3001
    @FXML
       public void initialize() {
 
-      if (editPressed == true || registerData.getRegisterName()[0] == null) {
-         System.out.println("initalize");
+      if (editPressed || registerData.getRegisterName()[0] == null) {
          AL.focusedProperty().addListener((ov, oldV, newV) -> {
             if (!newV) { // focus lost
-               inputValidation(0, AL);
+               inputValidation(AL);
 
             }
          });
 
          AH.focusedProperty().addListener((ov, oldV, newV) -> {
             if (!newV) { // focus lost
-               inputValidation(1, AH);
+               inputValidation(AH);
 
             }
          });
 
          BL.focusedProperty().addListener((ov, oldV, newV) -> {
             if (!newV) { // focus lost
-               inputValidation(2, BL);
+               inputValidation(BL);
 
             }
          });
          BH.focusedProperty().addListener((ov, oldV, newV) -> {
             if (!newV) { // focus lost
-               inputValidation(3, BH);
+               inputValidation(BH);
 
             }
          });
 
          CL.focusedProperty().addListener((ov, oldV, newV) -> {
             if (!newV) { // focus lost
-               inputValidation(4, CL);
+               inputValidation(CL);
 
             }
          });
 
          CH.focusedProperty().addListener((ov, oldV, newV) -> {
             if (!newV) { // focus lost
-               inputValidation(5, CH);
+               inputValidation(CH);
 
             }
          });
 
          DL.focusedProperty().addListener((ov, oldV, newV) -> {
             if (!newV) { // focus lost
-               inputValidation(6, DL);
+               inputValidation(DL);
 
             }
          });
 
          DH.focusedProperty().addListener((ov, oldV, newV) -> {
             if (!newV) { // focus lost
-               inputValidation(7, DH);
+               inputValidation(DH);
 
             }
          });
@@ -192,26 +204,18 @@ public class Scene1Controller {
          DL.setText(registerData.getRegisterName()[6].getText());
          DH.setText(registerData.getRegisterName()[7].getText());
 
-         AL = registerData.getRegisterName()[0];
-         AH = registerData.getRegisterName()[1];
-         BL = registerData.getRegisterName()[2];
-         BH = registerData.getRegisterName()[3];
-         CL = registerData.getRegisterName()[4];
-         CH = registerData.getRegisterName()[5];
-         DL = registerData.getRegisterName()[6];
-         DH = registerData.getRegisterName()[7];
+         AL.setEditable(false);
+         AH.setEditable(false);
+         BL.setEditable(false);
+         BH.setEditable(false);
+         CL.setEditable(false);
+         CH.setEditable(false);
+         DL.setEditable(false);
+         DH.setEditable(false);
 
-
-         for (TextField t :
-                 registerData.getRegisterName()) {
-            t.setEditable(false);
-         }
-      }
-      if(registerData.getRegisterName()[0] !=null)
-      {
-         System.out.println(registerData.getRegisterName()[0].getText());
 
       }
+
    }
 
 

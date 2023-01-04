@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -21,7 +22,8 @@ public class Scene2Controller {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        System.out.println("registerSwitchScene" + registerData.getRegisterName()[0].getText());
+        System.out.println("registerSwitchScene 1" + registerData.getRegisterName()[0].getText());
+
 
     }
 }
