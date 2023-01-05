@@ -55,7 +55,6 @@
             <Button layoutX="41.0" layoutY="306.0" mnemonicParsing="false" onMouseClicked="#zatwierdz" prefHeight="25.0" prefWidth="150.0" text="Zatwierdź zmiany" />
             <Button layoutX="42.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#edytuj" prefHeight="25.0" prefWidth="150.0" text="Edytuj" />
             <Button layoutX="349.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#switchScene" text="Wykonaj akcje" />
-            <Button layoutX="349.0" layoutY="196.0" mnemonicParsing="false" onMouseClicked="#Move" text="Mov" />
          </children>
       </Pane>
    </children>
