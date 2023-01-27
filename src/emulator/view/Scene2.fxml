@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.control.TextArea?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="emulator.controller.Scene2Controller">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emulator.controller.Scene2Controller">
    <children>
       <Button layoutX="300.0" layoutY="139.0" mnemonicParsing="false" onMouseClicked="#switchScene" text="Cofnij" />
-      <ChoiceBox layoutX="14.0" layoutY="82.0" onMouseClicked="#register1" prefWidth="150.0" />
-      <ChoiceBox layoutX="177.0" layoutY="82.0" onMouseClicked="#register2" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBox1" layoutX="14.0" layoutY="82.0" onMouseClicked="#register1" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBox2" layoutX="177.0" layoutY="82.0" onMouseClicked="#register2" prefWidth="150.0" />
       <Text layoutX="21.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wybierz rejestr nr1" wrappingWidth="136.90364837646484" />
       <Text layoutX="184.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wybierz rejestr nr2" wrappingWidth="136.90364837646484" />
       <Button layoutX="386.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#MOV" text="MOV" />
@@ -24,7 +22,7 @@
       <Button layoutX="387.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#INC" text="INC" />
       <Button layoutX="455.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#DEC" text="DEC" />
       <Button layoutX="522.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#NOT" text="NOT" />
-      <Text layoutX="394.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="   Działania na rejestrze nr 1" wrappingWidth="175.9830722808838" />
-      <TextArea layoutX="45.0" layoutY="148.0" prefHeight="230.0" prefWidth="239.0" />
+      <Button layoutX="391.0" layoutY="258.0" mnemonicParsing="false" onMouseClicked="#saveData" prefHeight="50.0" prefWidth="159.0" text=" Zapisz dane" />
+      <Button layoutX="391.0" layoutY="324.0" mnemonicParsing="false" onMouseClicked="#loadData" prefHeight="50.0" prefWidth="159.0" text="Wczytaj dane" />
    </children>
 </AnchorPane>

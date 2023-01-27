@@ -12,8 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.Objects;
+import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Scene1Controller {
    /**
@@ -30,20 +32,26 @@ public class Scene1Controller {
 
 
 
-   private void validtationAlert() {
+   private void validtationAlert(String alertT) {
       Alert alert = new Alert(AlertType.WARNING);
       alert.setTitle("Alert");
-      alert.setHeaderText("Podano błędną wartość ");
+      alert.setHeaderText(alertT);
       alert.showAndWait();
    }
 
    public void switchScene(MouseEvent event) throws IOException {
+      for (int i = 0; i < 8; i++) {
+         if(registerData.getRegisterName()[0]==null)
+         {
+            validtationAlert("Nie ustawiono wszystkich rejestrów");
+            break;
+         }
+      }
       Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../view/Scene2.fxml")));
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       Scene scene = new Scene(root);
       stage.setScene(scene);
       stage.show();
-      System.out.println("registerSwitchScene 1" + registerData.getRegisterName()[0].getText());
 
 
    }
@@ -53,9 +61,9 @@ public class Scene1Controller {
    public void inputValidation(TextField registerValue){
       try
       {
-         if(Integer.parseInt(registerValue.getText(),16) > 255 )
+         if(Integer.parseInt(registerValue.getText(),16) > 255  || Integer.parseInt(registerValue.getText(),16) <0 )
          {
-            validtationAlert();
+            validtationAlert("Podano złą wartość");
             registerValue.setText("");
 
          }
@@ -65,7 +73,7 @@ public class Scene1Controller {
 
          if(!(registerValue.getText().equals("")))
          {
-            validtationAlert();
+            validtationAlert("Podano złą wartość");
             registerValue.setText("");
          }
 
@@ -91,7 +99,6 @@ public class Scene1Controller {
    @FXML
    void zatwierdz() {
 
-      System.out.println("Zatwierdzenie");
 
       registerData.setRegisterName(0,AL);
       registerData.setRegisterName(1,AH);
@@ -122,6 +129,7 @@ public class Scene1Controller {
       DH = registerData.getRegisterName()[7];
 
 
+
       for (TextField t :
               registerData.getRegisterName()) {
          t.setEditable(false);
@@ -129,7 +137,31 @@ public class Scene1Controller {
     editPressed=false;
    }
 
+   @FXML
+   void loadData(MouseEvent event) throws IOException, ClassNotFoundException {
+      registerData.setRegisterName(0,AL);
+      registerData.setRegisterName(1,AH);
+      registerData.setRegisterName(2,BL);
+      registerData.setRegisterName(3,BH);
+      registerData.setRegisterName(4,CL);
+      registerData.setRegisterName(5,CH);
+      registerData.setRegisterName(6,DL);
+      registerData.setRegisterName(7,DH);
 
+      File dataFile = new File("RegisterData\\data.txt");
+      int i=0;
+      Scanner scanner = new Scanner(dataFile);
+      while (scanner.hasNextLine())
+      {
+
+         registerData.setRegisterNameValue(i,scanner.nextLine());
+         Logger.global.info("rejestr od " + i + " " +   registerData.getRegisterName()[i].getText());
+         i++;
+      }
+
+      scanner.close();
+      initialize();
+   }
 
 
    //generyczne 3001
@@ -194,7 +226,6 @@ public class Scene1Controller {
       }
       else
       {
-         System.out.println("else");
          AL.setText(registerData.getRegisterName()[0].getText());
          AH.setText(registerData.getRegisterName()[1].getText());
          BL.setText(registerData.getRegisterName()[2].getText());
