@@ -3,11 +3,15 @@ package emulator.data;
 
 import javafx.scene.control.TextField;
 
-public final class SingletonData {
+import java.io.Serializable;
+
+public final class SingletonData implements Serializable {
     private static SingletonData instance;
     public TextField AL,AH,BL,BH,CL,CH,DL,DH;
     private int []registerValue = new int[8];
     private TextField []registerName = {AL,AH,BL,BH,CL,CH,DL,DH};
+
+    private String []registerNameAndValue = new String[8];
 
     private SingletonData() {
         // The following code emulates slow initialization.
@@ -60,11 +64,19 @@ public final class SingletonData {
         return registerName;
     }
 
-    public void setRegisterValue(int index,int value) {
+
+
+    public void setRegisterValue(int index, int value) {
         this.registerValue[index] = value;
     }
 
-     public void setRegisterName(int index,TextField textField) {
-        this.registerName[index] = textField;
+    public void setRegisterNameValue(int index,String value) {
+        this.registerName[index].setText(value);
     }
+
+    public void setRegisterName(int index,TextField field) {
+        this.registerName[index] = field;
+    }
+
+
 }
